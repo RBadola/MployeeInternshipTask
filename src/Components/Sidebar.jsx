@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiBookmarks } from "react-icons/bi";
 import { BsStars } from "react-icons/bs";
 import { CiGrid31 } from "react-icons/ci";
+import { FaAngleRight } from "react-icons/fa";
 import { GrTask } from "react-icons/gr";
 import { IoIosArrowUp, IoMdHelpCircleOutline } from "react-icons/io";
 import { MdAttachMoney, MdCircle, MdKeyboardArrowRight } from "react-icons/md";
@@ -17,8 +18,35 @@ const Sidebar = () => {
     { item: "Analyst", icon: <MdCircle size={10} /> },
     { item: "Lorem Ipsum", icon: <MdCircle size={10} /> },
   ];
+  const [openSidebar, setOpenSidebar] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth >= 639) {
+      setOpenSidebar(true);
+    }
+
+    window.onresize = () => debounce(resizer());
+  }, [window.onresize]);
+  function debounce(fn) {
+    let timer;
+    return function () {
+      if (timer) {
+        clearTimeout(timer);
+      } else {
+        setTimeout(() => {
+          fn();
+        }, 100);
+      }
+    };
+  }
+  function resizer() {
+    if (window.innerWidth >= 639) {
+      setOpenSidebar(true);
+    }
+  }
   return (
-    <div className=" w-1/5  flex flex-col bg-white p-2 justify-between h-full px-6">
+    <>
+    {openSidebar && (
+    <div className=" absolute  z-20 border-r w-1/2 lg:w-1/5 sm:relative flex flex-col bg-white p-2 justify-between  h-full px-6">
       <main className="flex flex-col gap-y-2 ">
         <p className="dropdown-item ">
           <CiGrid31 />
@@ -74,7 +102,7 @@ const Sidebar = () => {
         </p>
       </main>
       <footer>
-        <div className="text-black font-semibold">
+        <div className="text-black font-semibold flex flex-col gap-y-2">
           <p className="select relative cursor-pointer font-light text-gray-400">
             Help & Support
           </p>
@@ -89,7 +117,7 @@ const Sidebar = () => {
           <button className="p-2 border rounded-md font-semibold text-left">
             Current Plan: Free
           </button>
-          <button className="p-2 border text-xl rounded-md border-orange-400 flex gap-2 items-center">
+          <button className="p-2 xl:text-lg  min-[1700px]:text-xl w-full border text-xl rounded-md border-orange-400 flex flex-col md:flex-row lg:flex-col 2xl:flex-row  2xl:gap-2items-center">
             <div className=" bg-orange-400 w-max h-max p-2 text-white rounded-full flex items-center justify-center ">
               <BsStars size={45} />
             </div>
@@ -102,6 +130,19 @@ const Sidebar = () => {
         </div>
       </footer>
     </div>
+    )}
+     <div
+        className={`${
+          openSidebar ? "right-4" : "left-0"
+        } z-20 h-max w-1/2 absolute sm:hidden `}
+      >
+        <FaAngleRight
+          onClick={() => setOpenSidebar(!openSidebar)}
+          fill="black"
+          className=" h-8 w-8 bg-white  px-2.5 rounded-r-full"
+        />
+      </div>
+    </>
   );
 };
 
