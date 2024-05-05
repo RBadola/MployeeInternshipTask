@@ -44,9 +44,9 @@ const Sidebar = () => {
     }
   }
   return (
-    <>
+    <div className="flex  ">
     {openSidebar && (
-    <div className=" absolute  z-20 border-r w-1/2 lg:w-1/5 sm:relative flex flex-col bg-white p-2 justify-between  h-full px-6">
+    <div className=" absolute  z-20 border w-full  sm:relative flex flex-col bg-white p-2 justify-between pl-10  h-full md:px-6">
       <main className="flex flex-col gap-y-2 ">
         <p className="dropdown-item ">
           <CiGrid31 />
@@ -113,11 +113,11 @@ const Sidebar = () => {
             <IoMdHelpCircleOutline /> Help Center
           </p>
         </div>
-        <div className="flex flex-col w-max gap-y-2">
+        <div className="flex flex-col w-full md:w-max gap-y-2">
           <button className="p-2 border rounded-md font-semibold text-left">
             Current Plan: Free
           </button>
-          <button className="p-2 xl:text-lg  min-[1700px]:text-xl w-full border text-xl rounded-md border-orange-400 flex flex-col md:flex-row lg:flex-col 2xl:flex-row  2xl:gap-2items-center">
+          <div className="p-2  xl:text-lg  min-[1700px]:text-xl w-full border  rounded-md border-orange-400 flex lg:flex-col 2xl:flex-row  gap-2 items-center">
             <div className=" bg-orange-400 w-max h-max p-2 text-white rounded-full flex items-center justify-center ">
               <BsStars size={45} />
             </div>
@@ -126,23 +126,18 @@ const Sidebar = () => {
               <span className="text-gray-400">Get all features</span>
             </p>
             <MdKeyboardArrowRight />
-          </button>
+          </div>
         </div>
       </footer>
     </div>
     )}
      <div
-        className={`${
-          openSidebar ? "right-4" : "left-0"
-        } z-20 h-max w-1/2 absolute sm:hidden `}
+        className={`z-20 absolute bg-orange-400 h-12 w-3 mt-2 rounded-r-md  `}
+        onClick={() => setOpenSidebar(!openSidebar)}
       >
-        <FaAngleRight
-          onClick={() => setOpenSidebar(!openSidebar)}
-          fill="black"
-          className=" h-8 w-8 bg-white  px-2.5 rounded-r-full"
-        />
+        
       </div>
-    </>
+    </div>
   );
 };
 

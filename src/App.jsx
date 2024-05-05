@@ -9,10 +9,10 @@ function App() {
 
   return (
     <div className=" bg-blue-100">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="  h-screen bg-blue-100  flex">
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         <Jobs />
       </div>
