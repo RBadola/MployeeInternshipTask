@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+
 import { CiBookmarkMinus } from "react-icons/ci";
 import { HiOutlineClock } from "react-icons/hi";
 import { HiOutlineBriefcase } from "react-icons/hi2";

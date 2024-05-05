@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BiBookmarks } from "react-icons/bi";
 import { BsStars } from "react-icons/bs";
 import { CiGrid31 } from "react-icons/ci";
-import { FaAngleRight } from "react-icons/fa";
 import { GrTask } from "react-icons/gr";
 import { IoIosArrowUp, IoMdHelpCircleOutline } from "react-icons/io";
 import { MdAttachMoney, MdCircle, MdKeyboardArrowRight } from "react-icons/md";
